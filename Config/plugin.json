@@ -1,0 +1,13 @@
+{
+	"name": "MenuLinks",
+	"description": "This plugin makes it easier to create links on the menu by allowing you to do it from the node editor.",
+
+	"author": "Liam Keily",
+	"authorEmail": "liam@simplywebsites.com",
+	"authorUrl": "http://www.liamkeily.com",
+
+	"dependencies": {
+		"plugins": [
+		]
+	}
+}
