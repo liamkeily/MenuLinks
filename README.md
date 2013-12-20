@@ -10,3 +10,5 @@ The nodes editor has a new tab which allows you to add a link to the menu, or ed
 
 ## Screenshot
 
+![Screenshot](https://github.com/liamkeily/MenuLinks/blob/master/screenshot.png?raw=true)
+
