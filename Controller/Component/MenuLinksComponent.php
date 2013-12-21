@@ -13,46 +13,35 @@ class MenuLinksComponent extends Component {
 		$controller->uses[] = 'Menus.Link';
 		$controller->uses[] = 'Menus.Menu';
 	
-		$controller->Security->unlockedFields[] = 'addlink';	
+		$controller->Security->unlockedFields[] = 'Link.addlink';	
 		$controller->Security->unlockedFields[] = 'link';	
-
-	}
-	
-	public function startup(Controller $controller){
-	
-
-		if($controller->params['controller'] == 'nodes' && ($controller->action == 'admin_edit' || $controller->action == 'admin_add')){
-
-			// Saving Link
-			if(!empty($controller->request->data['Link'])){
-				$controller->Link->create();
-				if($controller->Link->save($controller->request->data)){
-				}
-			}
-
-		}
 
 	}
 
 	public function beforeRender(Controller $controller){
 	
 		if($controller->params['controller'] == 'nodes' && ($controller->action == 'admin_edit' || $controller->action == 'admin_add')){
-			// The Link URL for current page
-			$link_url = sprintf(
-			    'plugin:%s/controller:%s/action:%s/type:%s/slug:%s',
-			    'nodes',
-			    'nodes',
-			    'view',
-			    $controller->Node->field('type'),
-			    $controller->Node->field('slug')
-			);
+	
+			$link_url = '';	
+			if($controller->action == 'admin_edit'){
+				// The Link URL for current page
+				$link_url = sprintf(
+				    'plugin:%s/controller:%s/action:%s/type:%s/slug:%s',
+				    'nodes',
+				    'nodes',
+				    'view',
+				    $controller->Node->field('type'),
+				    $controller->Node->field('slug')
+				);
 
-			// Find the corresponding link
-			$currentlink = $controller->Link->find('first',array(
-				'conditions'=>array(
-					'Link.link'=>$link_url,	
-				)
-			));				
+				// Find the corresponding link
+				$currentlink = $controller->Link->find('first',array(
+					'conditions'=>array(
+						'Link.link'=>$link_url,	
+					)
+				));				
+			}
+				
 			if(!isset($currentlink['Link']['id'])) $currentlink['Link']['id'] = 0;
 			if(!isset($currentlink['Link']['link'])) $currentlink['Link']['link'] = $link_url;
 			if(!isset($currentlink['Link']['title'])) $currentlink['Link']['title'] = null;
@@ -88,9 +77,5 @@ class MenuLinksComponent extends Component {
 			$controller->set(compact('menulist','linklist','currentlink'));
 		}
 	}
-
-	public function shutdown(Controller $controller){
-	}
-	
 
 }

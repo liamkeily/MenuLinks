@@ -1,2 +1,3 @@
 <?php
-Croogo::hookComponent('*', array('MenuLinks.MenuLinks'=>array('prority'=>20)));
+Croogo::hookComponent('*', array('MenuLinks.MenuLinks'));
+Croogo::hookBehavior('*','MenuLinks.MenuLinks',array());

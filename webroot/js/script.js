@@ -2,6 +2,7 @@ var linklist;
 $(function(){
 	
 	$("#addlink").click(function(){
+		$("#LinkTitle").val($("#NodeTitle").val());
 		showForm();
 	});
 	$(".linkmenu").change(function(){
