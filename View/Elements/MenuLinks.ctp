@@ -5,7 +5,7 @@ var linklist = JSON.parse('<?php echo addslashes(json_encode($linklist)); ?>');
 </script>
 
 <div class="row-fluid padded">
-	<p>Add Link To Menu? <input id="addlink" value="true" type="checkbox" name="Link[addlink]" <?php if($currentlink['Link']['id']){ echo 'checked'; } ?> /></p>
+	<div class="input checkbox">Add Link To Menu? <input id="addlink" value="true" type="checkbox" name="Link[addlink]" <?php if($currentlink['Link']['id']){ echo 'checked'; } ?> /></div>
 
 	<div class="linkform">
 	<?php
