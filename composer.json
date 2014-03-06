@@ -1,0 +1,17 @@
+{
+"name": "liamkeily/menulinks",
+"type": "cakephp-plugin",
+"description": "Utility for creating Menu Links in Croogo",
+"homepage": "http://github.com/liamkeily/MenuLinks",
+"license": "MIT",
+"authors": [
+{
+"name": "Liam Keily",
+"email": "liam@simplywebsites.com",
+"homepage": "http://www.liamkeily.com"
+}
+],
+"require": {
+"php": ">=5.3.0"
+}
+}
