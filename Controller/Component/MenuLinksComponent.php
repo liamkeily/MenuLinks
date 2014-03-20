@@ -19,7 +19,7 @@ class MenuLinksComponent extends Component {
 	}
 
 	public function beforeRender(Controller $controller){
-	
+
 		if($controller->params['controller'] == 'nodes' && ($controller->action == 'admin_edit' || $controller->action == 'admin_add')){
 	
 			$link_url = '';	
