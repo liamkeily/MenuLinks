@@ -18,6 +18,8 @@ class MenuLinksBehavior extends ModelBehavior {
 
 				if(isset($model->data['Link']['addlink']) && $model->data['Link']['addlink'] == 'true'){ 
 					$this->Link->create();
+					$this->Link->setTreeScope($link['Link']['menu_id']);
+
 						if($this->Link->save($model->data)){
 					}
 				}
@@ -38,10 +40,12 @@ class MenuLinksBehavior extends ModelBehavior {
 			    $node['Node']['type'],
 			    $node['Node']['slug']
 			);
-			$this->Link->deleteAll(array(
-				'Link.link'=>$link_url
-			));
+			$link = $this->Link->findByLink($link_url);
+			if (isset($link['Link']['id'])) {
+				$this->Link->setTreeScope($link['Link']['menu_id']);
+				$this->Link->delete($id);
+				Cache::clearGroup('menus','croogo_menus');
+			}
 		}
-		Cache::clearGroup('menus','croogo_menus');
 	}
 }
